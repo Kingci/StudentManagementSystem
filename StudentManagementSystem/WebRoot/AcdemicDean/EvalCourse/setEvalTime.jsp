@@ -16,31 +16,27 @@
 <title>研究生教务系统</title>
 <script language="javascript">
 function check(form){
-		var radioes = form.chooseCourseSwitch;
-		if(radioes[0].checked){
-			if (form.beginTime.value==""){
-				alert("请输入开始时间！");
-				form.beginTime.focus();
-				return false;
-			}
-			if (form.endTime.value==""){
-				alert("请输入结束时间！");
-				form.endTime.focus();
-				return false;
-			}
-		}
-		var i;
-		for(i = 0;i < radioes.length;i++)
-			if(radioes[i].checked)
-				break;
-		if(i == radioes.length){
-			alert("请选择是否开启选课");
-			return false;
-		}
+	if (form.beginTime.value==""){
+		alert("请输入开始时间！");
+		form.beginTime.focus();
+		return false;
 	}
+	if (form.endTime.value==""){
+		alert("请输入结束时间！");
+		form.endTime.focus();
+		return false;
+	}
+	var data = Date.parse(form.beginTime.value.replace(/\-/g, "\/"));
+	var data1 = Date.parse(form.endTime.value.replace(/\-/g, "\/"));
+    if(data>data1){
+    	alert("选择起始时间错误!");
+    	form.beginTime.focus();
+    	return false;
+	}
+}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<script language="javascript" type="text/javascript" src="../../JS/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="../../JS/jquery-1.3.2.js"></script>
 <link href="../../CSS/inner.css" rel="stylesheet" type="text/css" />
 <style>
@@ -102,18 +98,12 @@ function check(form){
     <td colspan="6" align="center">设置课程评估时间</td>
   </tr>
   <tr class='TABLE_TR_01'>
-    <td>是否开启课程评估</td>
-    <td>是<input type="radio" name="chooseCourseSwitch" value="1"></td>
-    <td>否<input type="radio" name="chooseCourseSwitch" value="2"></td>
-    <td></td>
-  </tr>
-  <tr class='TABLE_TR_02'>
     <td width="150">开始时间</td>
     <td width="40"><label for="beginTime"></label>
-      <input type="text" name="beginTime" id="beginTime" value=""style="width:150px;height:20px"/></td>
+      <input class="Wdate" name="beginTime" id="beginTime" type="text" onClick="WdatePicker()"></td>
     <td width="150">结束时间</td>
     <td><label for="endTime"></label>
-      <input type="text" name="endTime" id="endTime" value="" style="width:150px;height:20px"/></td>
+      <input class="Wdate" name="endTime" id="endTime" type="text" onClick="WdatePicker()"></td>
   </tr>
   <tr class='TABLE_TR_01'>
   	<td height="36" colspan="4" align="center"><input type="submit" name="insert" id="insert" value="添加" onclick="return check(form1)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

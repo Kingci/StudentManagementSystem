@@ -84,7 +84,7 @@
 	if (courInfo != null && !courInfo.isEmpty()){
 		out.println("<table width='75%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>");
 		out.println("<tr class='TABLE_TH'><td colspan='10' align='center'>课程退选</td></tr>");		
-		  out.println("<tr class='TABLE_TR_01'><td>课程号</td>	<td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td><td>选择</td></tr>");
+		 out.println("<tr class='TABLE_TR_01'><td>课程号</td>	<td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td><td>选择</td></tr>");
 		Iterator it = courInfo.iterator();
 		int flag = 2;
 		while(it.hasNext()){

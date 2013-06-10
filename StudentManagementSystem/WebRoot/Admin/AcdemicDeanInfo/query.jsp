@@ -88,7 +88,7 @@
 		  "</tr>" +
 		  "<tr class='TABLE_TR_01'>" +
 		    "<td width=\"92\" align=\"center\" class=\"tablebody\">编号</td>" +
-		      "<td width=\"135\" align=\"center\" class=\"tablebody\">用户名</td>" +
+		     "<td width=\"135\" align=\"center\" class=\"tablebody\">用户名</td>" +
 		    "<td width=\"114\" align=\"center\" class=\"tablebody\">密码</td>" +
 		    "<td width=\"391\" align=\"center\" class=\"tablebody\">院系信息</td>" +
 		  "</tr>");

@@ -134,11 +134,6 @@ public class AcdemicDean extends HttpServlet {
 		chooseCourseTimeForm.setDepartmentId(Integer.valueOf(request.getParameter("account")));
 		chooseCourseTimeForm.setBeginTime(request.getParameter("beginTime"));
 		chooseCourseTimeForm.setEndTime(request.getParameter("endTime"));
-		System.out.println(request.getParameter("chooseCourseSwitch"));
-		if(request.getParameter("chooseCourseSwitch").equals("1"))
-			chooseCourseTimeForm.setState(true);
-		else if(request.getParameter("chooseCourseSwitch").equals("2"))
-			chooseCourseTimeForm.setState(false);
 		int flag = acdemicDeanDAO.updateChooseCourseTime(chooseCourseTimeForm);
 		if(flag == 1){
 			response.sendRedirect("updateSuccess.jsp");
@@ -264,10 +259,6 @@ public class AcdemicDean extends HttpServlet {
 		chooseCourseTimeForm.setBeginTime(request.getParameter("beginTime"));
 		chooseCourseTimeForm.setEndTime(request.getParameter("endTime"));
 		System.out.println(request.getParameter("chooseCourseSwitch"));
-		if(request.getParameter("chooseCourseSwitch").equals("1"))
-			chooseCourseTimeForm.setState(true);
-		else if(request.getParameter("chooseCourseSwitch").equals("2"))
-			chooseCourseTimeForm.setState(false);
 		int flag = acdemicDeanDAO.updateEvalCourseTime(chooseCourseTimeForm);
 		if(flag == 1){
 			response.sendRedirect("updateSuccess.jsp");

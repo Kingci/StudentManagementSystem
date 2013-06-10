@@ -1,4 +1,4 @@
- <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page import="com.dao.*" %>
 <%@ page import="java.util.*" %>
@@ -71,7 +71,7 @@
 </div>
 <br/><br /><br /><br/>
 
-   <%
+  <%
   	AcdemicDAO acdemicDAO = new AcdemicDAO();
 	Collection courInfo = acdemicDAO.queryStudentCourse(account);
 	int studentId = -1;
@@ -109,7 +109,7 @@
   		out.println("</table>");
 	}
 	else 
-	{ 
+	{
 		out.println("没有学生选择课程");
 	}
   	

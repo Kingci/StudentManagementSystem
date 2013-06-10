@@ -141,7 +141,7 @@
     
 
 	}
-	String total_s = "总计"; 
+	String total_s = "总计";
 %>
 <% if (flag == 2) {%>
   <tr class='TABLE_TR_02'>

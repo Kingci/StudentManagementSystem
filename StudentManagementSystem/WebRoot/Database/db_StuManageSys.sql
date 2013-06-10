@@ -184,16 +184,14 @@ Drop table if exists tb_choose_course_time;
 create table tb_choose_course_time (
 	college_id int primary key not null,
 	begin_time nvarchar(255) not null,
-	end_time nvarchar(255) not null,
-	state bool not null
+	end_time nvarchar(255) not null
 );
 
 Drop table if exists tb_eval_course_time;
 create table tb_eval_course_time (
 	college_id int primary key not null,
 	begin_time nvarchar(255) not null,
-	end_time nvarchar(255) not null,
-	state bool not null
+	end_time nvarchar(255) not null
 );
 
 drop table if exists tb_notification;

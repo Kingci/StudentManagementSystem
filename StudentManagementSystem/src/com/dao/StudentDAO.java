@@ -1,4 +1,4 @@
- package com.dao;
+package com.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -279,7 +279,6 @@ public class StudentDAO {
 				 chooseCourseTimeForm.setDepartmentId(rs.getInt(1));
 				 chooseCourseTimeForm.setBeginTime(rs.getString(2));
 				 chooseCourseTimeForm.setEndTime(rs.getString(3));
-				 chooseCourseTimeForm.setState(rs.getBoolean(4));
 			 }
 			 else{
 				 chooseCourseTimeForm = null;
@@ -305,7 +304,6 @@ public class StudentDAO {
 				 chooseCourseTimeForm.setDepartmentId(rs.getInt(1));
 				 chooseCourseTimeForm.setBeginTime(rs.getString(2));
 				 chooseCourseTimeForm.setEndTime(rs.getString(3));
-				 chooseCourseTimeForm.setState(rs.getBoolean(4));
 			 }
 			 else{
 				 chooseCourseTimeForm = null;

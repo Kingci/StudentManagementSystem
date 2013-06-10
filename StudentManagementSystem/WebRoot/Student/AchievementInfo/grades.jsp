@@ -129,7 +129,7 @@
   <div class="title">选择学期</div>
   <ul>
   <%
- // System.out.println("up < down ? " + "上学期".compareTo("下学期")); 
+ // System.out.println("up < down ? " + "上学期".compareTo("下学期"));
   if(coll1!=null){
   Collection coll_y = achiv_info_dao.query_y_s(stu_id);
   Iterator i_y = coll_y.iterator();

@@ -104,7 +104,7 @@
   		}
   		out.println("</table>");
 	}
-	 else 
+	else 
 	{
 		out.println("没有学生选择课程");
 	}

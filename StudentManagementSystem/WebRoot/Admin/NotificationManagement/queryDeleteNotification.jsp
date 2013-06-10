@@ -106,7 +106,7 @@
   			out.println("<tr class='TABLE_TR_02'><td colspan='4' align='center'><input type='submit' name='delete' id='delete' value='删除' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
   					"<input type='button' name='return' id='return' value='返回' onClick=\"window.location.href='index.jsp'\"/></td></tr></table>");
 	}
-	else  
+	else 
 	{
 		out.println("没有发布通知");
 		System.out.println("Notification is empty!");

@@ -1,4 +1,4 @@
- <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page import="com.dao.*" %>
 <%@ page import="java.util.*" %>
@@ -86,7 +86,7 @@
 	if (courInfo != null && !courInfo.isEmpty()){
 		out.println("<table width='75%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>");
 		out.println("<tr class='TABLE_TH'><td colspan='9' align='center'>已选课程</td></tr>");
-		 out.println("<tr class='TABLE_TR_01'><td>课程号</td><td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td></tr>");
+		out.println("<tr class='TABLE_TR_01'><td>课程号</td><td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td></tr>");
 		Iterator it = courInfo.iterator();
 		int flag = 2;
 		while(it.hasNext()){

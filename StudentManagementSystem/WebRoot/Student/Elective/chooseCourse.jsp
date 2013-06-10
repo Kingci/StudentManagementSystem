@@ -84,12 +84,20 @@
 		int collegeId = -1;
 		String year = "";
 		String collegeName = "";
+		java.util.Date now = new java.util.Date();
+		java.util.Date beginTime = new java.util.Date();
+		java.util.Date endTime = new java.util.Date();
+		if(chooseCourseTimeForm != null){
+			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+			beginTime = sdf.parse(chooseCourseTimeForm.getBeginTime());
+			endTime = sdf.parse(chooseCourseTimeForm.getEndTime());
+		}
 		
-		if (courInfo != null && !courInfo.isEmpty() && chooseCourseTimeForm != null && chooseCourseTimeForm.getState()){
+		if (courInfo != null && !courInfo.isEmpty() && chooseCourseTimeForm != null &&(now.before(endTime) && now.after(beginTime))){
 			out.println("<table width='75%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>");
 			//out.println("<tr><td colspan='9' align='center'>可选课程</td></tr>");
 			out.println("<tr class='TABLE_TH'><td colspan='10' align='center' >选课开始时间："+chooseCourseTimeForm.getBeginTime()+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束时间："+chooseCourseTimeForm.getEndTime()+"</td></tr>");
-		      out.println("<tr class='TABLE_TR_01'><td>课程号</td>	<td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td><td>选择</td></tr>");
+		    out.println("<tr class='TABLE_TR_01'><td>课程号</td>	<td>课程中文名</td><td>课程英文名</td><td>学分数</td><td>周学时</td><td>学期</td><td>教学形式</td><td>开设院系</td><td>学年</td><td>选择</td></tr>");
 			Iterator it = courInfo.iterator();
 			int flag = 2;
 			while(it.hasNext()){
@@ -135,13 +143,13 @@
 	  			out.println("<tr class='TABLE_TR_02'><td colspan='10' align='center'><input type='submit' name='1' id='12' value='提交' /></td></tr></table>");
 				
 		}
-		else if(chooseCourseTimeForm == null || !chooseCourseTimeForm.getState()){
-			out.println("选课尚未开始");
-		}
-		else 
+		else if(courInfo == null || courInfo.isEmpty())
 		{
 			out.println("没有可选课程");
 			System.out.println("stuInfo is empty!");
+		}
+		else{
+			out.println("选课尚未开始");
 		}
 	} 	
   %>

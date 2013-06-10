@@ -107,7 +107,7 @@
   					"<input type='button' name='return' id='return' value='返回' onClick=\"window.location.href='index.jsp'\"/></td></tr></table>");
 	}
 	else 
- 	{
+	{
 		out.println("没有发布通知");
 		System.out.println("Notification is empty!");
 	}

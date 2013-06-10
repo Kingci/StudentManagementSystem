@@ -12,7 +12,7 @@ public class ConnDB {
 	  private static String dbUrl =
 	      "jdbc:mysql://127.0.0.1:3306/db_stumanagesys";
 	  public static String userName = "root";
-	  public static String password = "root";
+	  public static String password = "wozui3710";
 	  public ConnDB(){
 
 	  }

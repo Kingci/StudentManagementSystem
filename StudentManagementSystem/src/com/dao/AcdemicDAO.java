@@ -151,16 +151,15 @@ public class AcdemicDAO {
 		ResultSet rs = conn.executeQuery(sql);
 		try{
 			if(rs.next()){
-				sql = "update tb_choose_course_time set state=" +chooseCourseTimeForm.getState()+
-						",begin_time='"+ chooseCourseTimeForm.getBeginTime() +"',end_time='"+ chooseCourseTimeForm.getEndTime() +
+				sql = "update tb_choose_course_time set begin_time='"+ chooseCourseTimeForm.getBeginTime() +"',end_time='"+ chooseCourseTimeForm.getEndTime() +
 						"' where college_id ="+chooseCourseTimeForm.getDepartmentId();
 				System.out.println(sql);
 				flag = conn.executeUpdate(sql);
 			}
 			else{
-				sql = "insert into tb_choose_course_time(college_id,begin_time,end_time,state) values ("+
+				sql = "insert into tb_choose_course_time(college_id,begin_time,end_time) values ("+
 						chooseCourseTimeForm.getDepartmentId() + ",'" + chooseCourseTimeForm.getBeginTime() +
-						"','" + chooseCourseTimeForm.getEndTime() + "'," + chooseCourseTimeForm.getState() + ")";
+						"','" + chooseCourseTimeForm.getEndTime() + "')";
 				System.out.println(sql);
 				flag = conn.executeUpdate(sql);
 			}
@@ -179,16 +178,15 @@ public class AcdemicDAO {
 		ResultSet rs = conn.executeQuery(sql);
 		try{
 			if(rs.next()){
-				sql = "update tb_eval_course_time set state=" +chooseCourseTimeForm.getState()+
-						",begin_time='"+ chooseCourseTimeForm.getBeginTime() +"',end_time='"+ chooseCourseTimeForm.getEndTime() +
+				sql = "update tb_eval_course_time set begin_time='"+ chooseCourseTimeForm.getBeginTime() +"',end_time='"+ chooseCourseTimeForm.getEndTime() +
 						"' where college_id ="+chooseCourseTimeForm.getDepartmentId();
 				System.out.println(sql);
 				flag = conn.executeUpdate(sql);
 			}
 			else{
-				sql = "insert into tb_eval_course_time(college_id,begin_time,end_time,state) values ("+
+				sql = "insert into tb_eval_course_time(college_id,begin_time,end_time) values ("+
 						chooseCourseTimeForm.getDepartmentId() + ",'" + chooseCourseTimeForm.getBeginTime() +
-						"','" + chooseCourseTimeForm.getEndTime() + "'," + chooseCourseTimeForm.getState() + ")";
+						"','" + chooseCourseTimeForm.getEndTime() + "')";
 				System.out.println(sql);
 				flag = conn.executeUpdate(sql);
 			}

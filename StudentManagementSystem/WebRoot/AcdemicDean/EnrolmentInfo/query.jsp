@@ -85,7 +85,7 @@
 	if (stuInfo != null && !stuInfo.isEmpty()){
 		out.println("<table width='75%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>");
 		out.println("<tr class='TABLE_TH'><td colspan='10' align='center'>学生信息</td></tr>");
-	 	out.println("<tr class='TABLE_TR_01'><td>编号</td><td>姓名</td><td>性别</td><td>出生日期</td><td>学号</td><td>院名称</td><td>系名称</td><td>入学时间</td><td>有无学籍</td><td>学制</td></tr>");
+		out.println("<tr class='TABLE_TR_01'><td>编号</td><td>姓名</td><td>性别</td><td>出生日期</td><td>学号</td><td>院名称</td><td>系名称</td><td>入学时间</td><td>有无学籍</td><td>学制</td></tr>");
 		Iterator it = stuInfo.iterator();
 		int flag = 2;
 		while(it.hasNext()){

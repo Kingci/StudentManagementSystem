@@ -110,7 +110,7 @@
 	}
 	else 
 	{
-		 out.println("没有发布通知");
+		out.println("没有发布通知");
 		System.out.println("Notification is empty!");
 	}
   	
