@@ -7,6 +7,7 @@ import java.sql.*;
 import java.*;
 
 public class AccountDAO {
+	/*À²À²À²*/
     private ConnDB conn = new ConnDB();
     //²éÑ¯Êý¾Ý
    /* public Collection query(String queryif) {
