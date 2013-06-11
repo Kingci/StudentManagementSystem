@@ -1,6 +1,8 @@
 package com.action;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -103,6 +105,9 @@ public class FileUpload extends HttpServlet {
 							stu_num = readsheet.getCell(0, i).getContents();
 							name_en = readsheet.getCell(1, i).getContents();
 							birth_time = readsheet.getCell(2, i).getContents();
+							if (birth_time.charAt(0) == '9') {
+								birth_time = "19" + birth_time;
+							}
 							gender = readsheet.getCell(3, i).getContents();
 							college_num = readsheet.getCell(4, i).getContents();
 							major_num = readsheet.getCell(5, i).getContents();

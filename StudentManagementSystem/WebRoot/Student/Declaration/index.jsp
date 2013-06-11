@@ -66,7 +66,7 @@
   <ul>
 	    <li id="studentinfo"><a href="../Declaration/onlinedeclare.jsp"><img src="../../Images/stueval.png"/><br />在线申报</a></li>
 	    <li id="studentinfo"><a href="../Declaration/decInfo.jsp"><img src="../../Images/stueval.png"/><br />申报信息查询</a></li>
-	    <li id="studentinfo"><a href="../Declaration/test.zip"><img src="../../Images/stueval.png"/><br />表格下载</a></li>
+	    <li id="studentinfo"><a href="../Declaration/test.xls"><img src="../../Images/stueval.png"/><br />表格下载</a></li>
 </div>
 <script type="text/javascript" src="../../JS/flash.js"></script>
 </body>
