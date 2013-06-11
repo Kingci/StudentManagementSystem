@@ -225,9 +225,9 @@ public class AdminDAO {
 			else{
 				sql = "insert into tb_course_info (course_id, course_name_chs, course_name_egh,"+
 						"credit, week_hour, semester, teach_mode, college_id,course_year) values"+
-						"(" +courseForm.getId()+","+courseForm.getNameC()+","+courseForm.getNameE()+
-						","+courseForm.getCredit()+","+courseForm.getWeekHour()+","+courseForm.getSemester()+
-						","+courseForm.getTeacherMode()+","+courseForm.getCollegeId()+","+courseForm.getYear()+")";
+						"(" +courseForm.getId()+",'"+courseForm.getNameC()+"','"+courseForm.getNameE()+
+						"',"+courseForm.getCredit()+","+courseForm.getWeekHour()+",'"+courseForm.getSemester()+
+						"','"+courseForm.getTeacherMode()+"',"+courseForm.getCollegeId()+",'"+courseForm.getYear()+"')";
 				System.out.println("Ìí¼Ó¿Î³ÌµÄSQL£º" + sql);
 				flag = conn.executeUpdate(sql);
 			}

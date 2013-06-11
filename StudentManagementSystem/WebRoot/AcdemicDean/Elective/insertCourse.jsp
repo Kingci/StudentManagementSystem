@@ -134,23 +134,56 @@
   <tr class='TABLE_TR_02'>
     <td >学分数</td>
     <td><label for="credit"></label>
-      <input type="text" name="credit" id="credit" value=""/></td>
+      <select name="credit" id="credit">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      </select></td>
     <td >周学时</td>
     <td><label for="weekHour"></label>
-      <input type="text" name="weekHour" id="weekHour" value="" /></td>
+      <select name="weekHour" id="weekHour">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      </select></td>
     <td >学期</td>
     <td colspan="3"><label for="semester"></label>
-      <input type="text" name="semester" id="semester" value="" /></td>
+      <select name="semester" id="semester">
+      <option value="上学期">上学期</option>
+      <option value="下学期">下学期</option>
+      </select></td>
   </tr>
   <tr class='TABLE_TR_01'>
   	<td >教学形式</td>
     <td><label for="teachMode"></label>
-      <input type="text" name="teachMode" id="teachMode" value="" /></td>
+      <select name="teachMode" id="teachMode">
+      <option value="通识">通识</option>
+      <option value="平台">平台</option>
+      <option value="核心">核心</option>
+      <option value="选修">选修</option>
+      <option value="指选">指选</option>
+      </select></td>
     <td >开课院系</td>
     <td><%=collegeName %></td>
     <td >学年</td>
-    <td colspan="3"><label for="courseYear"></label>
-      <input type="text" name="courseYear" id="courseYear" value="" /></td>
+    <td colspan="3">
+      <label for="courseYear"></label>
+      <select name="courseYear" id="courseYear">
+      <%
+      	for(int i = 0;i <100; i++)
+      		out.println("<option value=\""+ Integer.toString(2000+i)+"-"+ Integer.toString(2001+i) +"\">"+ Integer.toString(2000+i)+"-"+ Integer.toString(2001+i) +"</option>");
+       %>
+      </select></td>
   </tr>
   <tr class='TABLE_TR_02'>
     <td height="36" colspan="6" align="center"><input type="submit" name="insert" id="insert" value="添加" onclick="return check(form1)"/></td>

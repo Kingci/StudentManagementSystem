@@ -66,7 +66,7 @@
 </div>
 <br/><br /><br /><br/>
 
-<table width='55%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>
+<table width='75%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:collapse' align='center'>
   <%
   	AdminDAO adminDAO = new AdminDAO();
 	Collection courInfo = adminDAO.queryCourse();
