@@ -30,7 +30,8 @@
 	%>
 			<script language="javascript">
 			alert("学生信息导出成功!");
-			window.location.href="http://lenovo:8080/StudentManagementSystem/download/exportStudent.xls";
+			window.open("http://lenovo:8080/StudentManagementSystem/download/exportStudent.xls");
+			window.location.href="query.jsp";
 			</script>
 	<% 
 			break;
