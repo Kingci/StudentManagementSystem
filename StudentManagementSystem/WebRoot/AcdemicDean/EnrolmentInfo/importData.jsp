@@ -61,7 +61,7 @@
   			return false;
  		}
 		else{
-  			alert("文件只支持xls，xlsx格式");
+  			alert("文件只支持xls格式");
   			return false;
  		}
 	}
