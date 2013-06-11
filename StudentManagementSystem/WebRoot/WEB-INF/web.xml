@@ -14,6 +14,10 @@
 		<servlet-name>FileUpload</servlet-name>
 		<url-pattern>/AcdemicDean/EnrolmentInfo/fileupload</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileUpload</servlet-name>
+		<url-pattern>/AcdemicDean/Elective/fileupload</url-pattern>
+	</servlet-mapping>
 	<!-- 用户 -->
 	<servlet>
 		<servlet-name>Account</servlet-name>

@@ -73,6 +73,7 @@ public class FileUpload extends HttpServlet {
 					item.write(new File(path, filename));
 					//System.out.println("filename is " + filename + ", action is " + action);
 					InputStream instream = new FileInputStream(path + "/" + filename);
+					System.out.println(action);
 					if (action.equals("importStudentInfo")) {  // 教务员端导入学生学籍信息
 						AcdemicDAO dao = new AcdemicDAO();
 						
@@ -125,22 +126,69 @@ public class FileUpload extends HttpServlet {
 									telephone + "','" + home_addr + "','" + pos_code + "','" + citizenship + "','" +
 									nation +
 									"')";
+							System.out.println("stu_num is " + stu_num);
 							if (dao.isExistStudent(stu_num) == 0) {	//避免重复插入
 								if (dao.insertStudentInfo(sql) <= 0) {
 									error = true;
 									break;
 								}
 							}
-						}
+						}	
 						System.out.println( "error is " + error);
 						if (!error)
 							request.getRequestDispatcher("result.jsp?para=1").forward(request, response);
 						else 
 							request.getRequestDispatcher("result.jsp?para=2").forward(request, response);
 					}
+					if (action.equals("importCourseInfo")) {  // 教务员端导入课程信息
+						AcdemicDAO daocourse = new AcdemicDAO();
+						
+						Workbook readcourse = Workbook.getWorkbook(instream);
+						Sheet readsheetcourse = readcourse.getSheet(0);
+						int cColumns = readsheetcourse.getColumns();
+						int cRows = readsheetcourse.getRows();
+						System.out.println("columns: " + cColumns + ",rows:" + cRows);
+						String course_id = "";
+						String course_name_chs = "";
+						String course_name_egh = "";
+						String credit = "";
+						String week_hour = "";
+						String semester = "";
+						String teach_mode = "";
+						String college_id = "";
+						String course_year = "";
+						boolean errorcourse = false;
+						for (int i = 1; i < cRows ; i ++) {
+							course_id = readsheetcourse.getCell(0, i).getContents();
+							course_name_chs = readsheetcourse.getCell(1, i).getContents();
+							course_name_egh = readsheetcourse.getCell(2, i).getContents();
+							credit = readsheetcourse.getCell(3, i).getContents();
+							week_hour = readsheetcourse.getCell(4, i).getContents();
+							semester = readsheetcourse.getCell(5, i).getContents();
+							teach_mode = readsheetcourse.getCell(6, i).getContents();
+							college_id = readsheetcourse.getCell(7, i).getContents();
+							course_year = readsheetcourse.getCell(8, i).getContents();
+							
+							String sql = "insert into tb_course_info(course_id,course_name_chs,course_name_egh,credit,week_hour,semester,teach_mode,college_id," + 
+									"course_year) values (" + course_id + ",'" + course_name_chs + "','"+ course_name_egh + "'," +
+									credit + "," + week_hour + ",'" + semester + "','" + teach_mode + "'," + college_id +
+									",'" + course_year + "')";
+							System.out.println(sql);
+							if (daocourse.insertCourseInfo(sql) <= 0) {
+								errorcourse = true;
+								break;
+							}
+						}
+						System.out.println(errorcourse);
+						if (!errorcourse)
+							request.getRequestDispatcher("result.jsp?para=1").forward(request, response);
+						else 
+							request.getRequestDispatcher("result.jsp?para=2").forward(request, response);
+					}
 				}
 			}	
-		} catch (FileUploadException e) {
+		}
+		catch (FileUploadException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
