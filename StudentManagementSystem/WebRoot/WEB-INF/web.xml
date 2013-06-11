@@ -31,6 +31,10 @@
 		<servlet-name>FileDownload</servlet-name>
 		<url-pattern>/AcdemicDean/EnrolmentInfo/filedownload</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileDownload</servlet-name>
+		<url-pattern>/AcdemicDean/Elective/filedownload</url-pattern>
+	</servlet-mapping>
 	<!-- 用户 -->
 	<servlet>
 		<servlet-name>Account</servlet-name>

@@ -869,4 +869,29 @@ public class AcdemicDAO {
 		}
 		return al;
 	}
+	
+	public ArrayList<CourseForm> queryCourseInfo(String sql) {
+		ArrayList<CourseForm> al = new ArrayList<CourseForm>();
+		ResultSet rs = conn.executeQuery(sql);
+		try {
+			while (rs.next()) {
+				CourseForm form = new CourseForm(); 
+				form.setId(rs.getInt(1));
+				form.setNameC(rs.getString(2));
+				form.setNameE(rs.getString(3));
+				form.setCredit(rs.getFloat(4));
+				form.setWeekHour(rs.getInt(5));
+				form.setSemester(rs.getString(6));
+				form.setTeacherMode(rs.getString(7));
+				form.setCollegeId(rs.getInt(8));
+				form.setYear(rs.getString(9));
+				al.add(form);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
+	}
 }

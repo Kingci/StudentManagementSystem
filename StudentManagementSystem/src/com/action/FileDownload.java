@@ -15,6 +15,7 @@ import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
 
 
+import com.actionForm.CourseForm;
 import com.actionForm.StudentForm;
 import com.dao.AcdemicDAO;
 
@@ -96,6 +97,65 @@ public class FileDownload extends HttpServlet {
 					label[15] = new Label(15, i + 1, al.get(i).getCitizenShip());
 					label[16] = new Label(16, i + 1, al.get(i).getNation());
 					for (int j = 0; j < 17; j ++) ws.addCell(label[j]);
+				}
+				wwb.write();
+				wwb.close();
+				outStream.close();
+				request.getRequestDispatcher("result.jsp?para=3").forward(request, response);
+			} catch (RowsExceededException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if (action.equals("exportCourseInfo")) {	// 导出课程表信息
+			try {
+				// 添加第一行
+				String filename = "exportCourse.xls";
+				OutputStream outStream = new FileOutputStream(new File(path + "/" + filename));
+				WritableWorkbook wwb = Workbook.createWorkbook(outStream);
+				WritableSheet ws = wwb.createSheet("Sheet 1", 0);
+				Label label0 = new Label(0, 0, "课程编号");
+				Label label1 = new Label(1, 0, "课程中文名");
+				Label label2 = new Label(2, 0, "课程英文名");
+				Label label3 = new Label(3, 0, "学分");
+				Label label4 = new Label(4, 0, "周学时");
+				Label label5 = new Label(5, 0, "学期");
+				Label label6 = new Label(6, 0, "教学方式");
+				Label label7 = new Label(7, 0, "开设院系");
+				Label label8 = new Label(8, 0, "开设年份");
+				ws.addCell(label0);
+				ws.addCell(label1);
+				ws.addCell(label2);
+				ws.addCell(label3);
+				ws.addCell(label4);
+				ws.addCell(label5);
+				ws.addCell(label6);
+				ws.addCell(label7);
+				ws.addCell(label8);
+				
+				// 学生信息
+				String sql = "select * from tb_course_info where college_id in (select college_id from" +
+						" tb_college_info where college_id = " + account + ")";
+				System.out.println(sql);
+				AcdemicDAO dao = new AcdemicDAO();
+				ArrayList<CourseForm> al = dao.queryCourseInfo(sql);
+				for (int i = 0; i < al.size(); i ++) {
+					Label[] label = new Label[9];
+					label[0] = new Label(0, i + 1, Integer.toString(al.get(i).getId()));
+					label[1] = new Label(1, i + 1, al.get(i).getNameC());
+					label[2] = new Label(2, i + 1, al.get(i).getNameE());
+					label[3] = new Label(3, i + 1, String.valueOf(al.get(i).getCredit()));
+					label[4] = new Label(4, i + 1, Integer.toString(al.get(i).getWeekHour()));
+					label[5] = new Label(5, i + 1, al.get(i).getSemester());
+					label[6] = new Label(6, i + 1, al.get(i).getTeacherMode());
+					label[7] = new Label(7, i + 1, Integer.toString(al.get(i).getCollegeId()));
+					label[8] = new Label(8, i + 1, al.get(i).getYear());
+					for (int j = 0; j < 9; j ++) ws.addCell(label[j]);
 				}
 				wwb.write();
 				wwb.close();

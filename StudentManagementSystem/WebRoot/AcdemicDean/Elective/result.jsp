@@ -26,6 +26,15 @@
 			</script>
 	<%
 			break;
+			case 3:
+	%>
+			<script language="javascript">
+			alert("课程信息导出成功!");
+			window.open("http://localhost:8080/StudentManagementSystem/download/exportCourse.xls");
+			window.location.href="index.jsp";
+			</script>
+	<% 
+			break;
 			}
 	 %>
 </body>

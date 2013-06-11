@@ -1,15 +1,19 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<%String account = (String)session.getAttribute("Account");
+<%@ page import="com.dao.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.actionForm.*" %>
+<%
+	String account = (String)session.getAttribute("Account");
 	String accountType = (String)session.getAttribute("AccountType");
 	if (account == null || "".equals(account)){
 		response.sendRedirect("../../index.jsp");
 	} 
 %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>ç ”ç©¶ç”Ÿæ•™åŠ¡ç³»ç»Ÿ</title>
+<title>ÑĞ¾¿Éú½ÌÎñÏµÍ³</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <script type="text/javascript" src="../../JS/jquery-1.3.2.js"></script>
@@ -22,7 +26,7 @@
 .MenuBar .current a{color:#008ace;}
 .MenuBar li{float:left;list-style:none;padding-bottom:11px;}
 .MenuBar li.back{background:url(../../Images/b_slider.gif) center bottom no-repeat;width:120px;height:28px;z-index:8;position:absolute;}
-.MenuBar li a{font:bold 14px arial;text-decoration:none;color:#303030;outline:none;text-align:center;top:6px;letter-spacing:0;z-index:10;display:block;float:left;height:28px;position:relative;overflow:hidden;padding:5px 20px 0 17px;font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"å¾®è½¯é›…é»‘";font-weight:normal;font-size:13px;}
+.MenuBar li a{font:bold 14px arial;text-decoration:none;color:#303030;outline:none;text-align:center;top:6px;letter-spacing:0;z-index:10;display:block;float:left;height:28px;position:relative;overflow:hidden;padding:5px 20px 0 17px;font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"Î¢ÈíÑÅºÚ";font-weight:normal;font-size:13px;}
 </style>
 </head>
 
@@ -31,45 +35,50 @@
 <div id="Header">
 	  <ul  id="1" class="MenuBar">	 
       	<span class="sep">|</span>	 
-		<li >
-			<a href="../index.jsp" style="padding: 5px 30px 0;">é¦–é¡µ</a>
+		<li>
+			<a href="../index.jsp" style="padding: 5px 30px 0;">Ê×Ò³</a>
 		</li> 
         <span class="sep">|</span>	
-		<li>
-			<a href="../EnrolmentInfo/index.jsp" style="padding: 5px 30px 0;">å­¦ç±ä¿¡æ¯</a>
+		<li class="current">
+			<a href="../EnrolmentInfo/index.jsp" style="padding: 5px 30px 0;">Ñ§¼®ĞÅÏ¢</a>
 		</li>
 		<span class="sep">|</span>		
-		<li class="current">
-			<a href="../Elective/index.jsp" style="padding: 5px 30px 0;">é€‰è¯¾å®‰æ’</a>
+		<li>
+			<a href="../Elective/index.jsp" style="padding: 5px 30px 0;">Ñ¡¿Î°²ÅÅ</a>
 		</li>
 		<span class="sep">|</span>	
 		<li >
-			<a href="../AchievementManagement/index.jsp" style="padding: 5px 30px 0;">æˆç»©ç®¡ç†</a>
+			<a href="../AchievementManagement/index.jsp" style="padding: 5px 30px 0;">³É¼¨¹ÜÀí</a>
 		</li>
 		<span class="sep">|</span>				
 		<li >
-			<a href="../Declaration/index.jsp" style="padding: 5px 30px 0;">ç”³æŠ¥ç³»ç»Ÿ</a>
+			<a href="../Declaration/index.jsp" style="padding: 5px 30px 0;">Éê±¨ÏµÍ³</a>
 		</li>
 		<span class="sep">|</span>				
 		<li >
-			<a href="../EvalCourse/index.jsp" style="padding: 5px 30px 0;">è¯¾ç¨‹è¯„ä¼°</a>
+			<a href="../EvalCourse/index.jsp" style="padding: 5px 30px 0;">¿Î³ÌÆÀ¹À</a>
 		</li>
         <span class="sep">|</span>				
 		<li >
-			<a href="../Notification/index.jsp" style="padding: 5px 30px 0;">é€šçŸ¥è®¾ç½®</a>
+			<a href="../Notification/index.jsp" style="padding: 5px 30px 0;">Í¨ÖªÉèÖÃ</a>
 		</li>
 	 </ul>
-	  <br />
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;æ¬¢è¿æ‚¨ï¼š<font color="#0000ff"><%=account%></font> &nbsp;å½“å‰èº«ä»½ï¼š<font color="#0000ff"><%=accountType%></font>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../../Images/Icon_Exit.gif'/><a href="../../logout.jsp">é€€å‡º</a>
+	 <br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;»¶Ó­Äú£º<font color="#0000ff"><%=account%></font> &nbsp;µ±Ç°Éí·İ£º<font color="#0000ff"><%=accountType%></font>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../../Images/Icon_Exit.gif'/><a href="../../logout.jsp">ÍË³ö</a>
+	</div>
 </div>
-</div>
-<br/>
-<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="">
- <label for="leadout">å¯¼å‡ºæ–‡ä»¶</label>
-  <input type="file" name="leadout" id="leadout" />
-  <input type="submit" name="out" id="out" value="å¯¼å‡º" />
-</form>
-<br /><br /><br/>
+<br/><br /><br /><br/>
+
+  <form id="form1" action="filedownload?action=exportCourseInfo" method="post">
+  <table width='35%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:	collapse' align='center'>
+  <tr class='TABLE_TH'><td colspan='2' align='center'>µ¼³ö¿Î³ÌĞÅÏ¢</td></tr>
+   <tr class='TABLE_TR_01'>
+   	 <td align='center'>¿Î³ÌĞÅÏ¢±í¸ñ£º</td>
+     <td align='center'><input type="submit" name="submit" id="submit" value="ÏÂÔØ" /></td></tr>
+  </table>
+  <input type="hidden" name="account" value="<%=account %>"/>
+  </form>
+<script type="text/javascript" src="../../JS/flash.js"></script>
 </body>
 </html>
