@@ -62,19 +62,14 @@
 	  <br />
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;欢迎您：<font color="#0000ff"><%=account%></font> &nbsp;当前身份：<font color="#0000ff"><%=accountType%></font>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../../Images/Icon_Exit.gif'/><a href="../../logout.jsp">退出</a>
-	</div>
 </div>
-<br/><br /><br /><br/>
-
-<div id="Function">
-  <ul>
-	    <li ><a href="../Elective/sectiontime.jsp"><img src="../../Images/elective_gym.png" /><br />设置选课起始时间</a></li>
-        <li ><a href="../Elective/coursemanage.jsp"><img src="../../Images/elective_speciality.png" /><br />选课课程管理</a></li>
-        <li ><a href="../Elective/query.jsp"><img src="../../Images/recondition.png" /><br />查看选课情况</a></li>
-        <li ><a href="../Elective/leadin.jsp"><img src="../../Images/elective_public.png" /><br />导入选课课程</a></li>
-        <li ><a href="../Elective/leadout.jsp"><img src="../../Images/elective_public_renew.png" /><br />导出选课课程</a></li>
-  </ul>
 </div>
-<script type="text/javascript" src="../../JS/flash.js"></script>
+<br/>
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="">
+ <label for="leadout">导出文件</label>
+  <input type="file" name="leadout" id="leadout" />
+  <input type="submit" name="out" id="out" value="导出" />
+</form>
+<br /><br /><br/>
 </body>
 </html>

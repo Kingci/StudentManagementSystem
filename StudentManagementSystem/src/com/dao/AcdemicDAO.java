@@ -822,11 +822,51 @@ public class AcdemicDAO {
 		return flag;
 	}
 	
+	public int insertCourseInfo(String sql){
+		int flag = conn.executeUpdate(sql);
+		conn.close();
+		System.out.println(flag);
+		return flag;
+	}
+	
 	public int isExistStudent(String stu_num) throws SQLException {
 		String sql = "select * from tb_student where stu_num = '" + stu_num + "'";
 		ResultSet rs = conn.executeQuery(sql);
 		if (rs.next()) return 1;
 		else return 0;
+	}
+	
+	public ArrayList<StudentForm> queryStudentInfo(String sql) {
+		ArrayList<StudentForm> al = new ArrayList<StudentForm>();
+		ResultSet rs = conn.executeQuery(sql);
+		try {
+			while (rs.next()) {
+				StudentForm form = new StudentForm(); 
+				//form.setStuId(rs.getInt(1));
+				form.setStuNum(rs.getString(2));
+				form.setNameCh(rs.getString(3));
+				form.setBirthTime(rs.getString(5));
+				form.setGender(rs.getString(6));
+				form.setCollegeNum(rs.getString(7));
+				form.setMajorNum(rs.getString(8));
+				form.setSchLength(rs.getString(9));
+				form.setIdNum(rs.getString(10));
+				form.setEntrTime(rs.getString(11));
+				form.setStuStatus(rs.getString(12));
+				form.setGraduSch(rs.getString(13));
+				form.setEmail(rs.getString(14));
+				form.setTelephone(rs.getString(15));
+				form.setHomeAddr(rs.getString(16));
+				form.setPosCode(rs.getString(17));
+				form.setCitizenship(rs.getString(18));
+				form.setNation(rs.getString(19));
+				al.add(form);
+			}
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
 	}
 }

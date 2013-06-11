@@ -14,10 +14,7 @@
 		<servlet-name>FileUpload</servlet-name>
 		<url-pattern>/AcdemicDean/EnrolmentInfo/fileupload</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>FileUpload</servlet-name>
-		<url-pattern>/AcdemicDean/Elective/fileupload</url-pattern>
-	</servlet-mapping>
+<<<<<<< HEAD
 	<!-- 下载 -->
 	<servlet>
 		<servlet-name>FileDownload</servlet-name>
@@ -28,8 +25,13 @@
 		<url-pattern>/filedownload</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>FileDownload</servlet-name>
+		<servlet-name>FileUpload</servlet-name>
 		<url-pattern>/AcdemicDean/EnrolmentInfo/filedownload</url-pattern>
+=======
+	<servlet-mapping>
+		<servlet-name>FileUpload</servlet-name>
+		<url-pattern>/AcdemicDean/Elective/fileupload</url-pattern>
+>>>>>>> ea6eebeeda1d925dbf8f4b22b72af16295fd6bbe
 	</servlet-mapping>
 	<!-- 用户 -->
 	<servlet>
