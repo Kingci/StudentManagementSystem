@@ -68,7 +68,8 @@
 <div id="Function">
   <ul>
 	    <li ><a href="../EnrolmentInfo/query.jsp"><img src="../../Images/personal1.png" /><br />学籍信息查看</a></li>
-      
+      	<li ><a href="../EnrolmentInfo/importData.jsp"><img src="../../Images/elective_public_renew.png" /><br />学籍信息导入</a></li>
+        <li ><a href="../EnrolmentInfo/exportData.jsp"><img src="../../Images/elective_speciality.png" /><br />学籍信息导出</a></li>
   </ul>
 </div>
 <script type="text/javascript" src="../../JS/flash.js"></script>

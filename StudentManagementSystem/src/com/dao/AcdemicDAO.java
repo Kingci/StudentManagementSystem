@@ -815,4 +815,10 @@ public class AcdemicDAO {
 		conn.close();
 		return flag;
 	}
+	
+	public int insertStudentInfo(String sql) {
+		int flag = conn.executeUpdate(sql);
+		conn.close();
+		return flag;
+	}
 }
