@@ -821,4 +821,12 @@ public class AcdemicDAO {
 		conn.close();
 		return flag;
 	}
+	
+	public int isExistStudent(String stu_num) throws SQLException {
+		String sql = "select * from tb_student where stu_num = '" + stu_num + "'";
+		ResultSet rs = conn.executeQuery(sql);
+		if (rs.next()) return 1;
+		else return 0;
+
+	}
 }

@@ -19,7 +19,7 @@ insert into tb_account(id, aname, pwd, atype) values
 
 Drop table if exists tb_student;
 create table tb_student (
-	stu_id bigint not null primary key auto_increment,
+	stu_id bigint not null key auto_increment,
 	stu_num nvarchar(50) ,
 	name_ch nvarchar(50) not null,
 	name_en nvarchar(50),

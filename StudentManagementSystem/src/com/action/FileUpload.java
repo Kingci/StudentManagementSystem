@@ -71,7 +71,7 @@ public class FileUpload extends HttpServlet {
 					//截取 上传文件的 字符串名字，加1是 去掉反斜杠，
 					String filename = value.substring(start+1);
 					item.write(new File(path, filename));
-					System.out.println("filename is " + filename + ", action is " + action);
+					//System.out.println("filename is " + filename + ", action is " + action);
 					InputStream instream = new FileInputStream(path + "/" + filename);
 					if (action.equals("importStudentInfo")) {  // 教务员端导入学生学籍信息
 						AcdemicDAO dao = new AcdemicDAO();
@@ -99,39 +99,41 @@ public class FileUpload extends HttpServlet {
 						String citizenship = "";
 						String nation = "";
 						boolean error = false;
-						for (int i = 1; i < rsRows; i ++) {
-							stu_num = readsheet.getCell(i, 0).getContents();
-							name_en = readsheet.getCell(i, 1).getContents();
-							birth_time = readsheet.getCell(i, 2).getContents();
-							gender = readsheet.getCell(i, 3).getContents();
-							college_num = readsheet.getCell(i, 4).getContents();
-							major_num = readsheet.getCell(i, 5).getContents();
-							sch_length = readsheet.getCell(i, 6).getContents();
-							id_num = readsheet.getCell(i, 7).getContents();
-							entr_time = readsheet.getCell(i, 8).getContents();
-							stu_status = readsheet.getCell(i, 9).getContents();
-							gradu_sch = readsheet.getCell(i, 10).getContents();
-							email = readsheet.getCell(i, 11).getContents();
-							telephone = readsheet.getCell(i, 12).getContents();
-							home_addr = readsheet.getCell(i, 13).getContents();
-							pos_code = readsheet.getCell(i, 14).getContents();
-							citizenship = readsheet.getCell(i, 15).getContents();
-							nation = readsheet.getCell(i, 16).getContents();
-							String sql = "insert into tb_Student(stu_num,name_en,birth_time,gender,college_num,major_num" +
-									"sch_length,id_num,entr_time,stu_status,gradu_sch,email,telephone,home_addr,pos_code" +
-									"citizenship,nation) values (' + " + stu_num + "','" + name_en + "','" + birth_time + "','"+
+						for (int i = 1; i < rsRows ; i ++) {
+							stu_num = readsheet.getCell(0, i).getContents();
+							name_en = readsheet.getCell(1, i).getContents();
+							birth_time = readsheet.getCell(2, i).getContents();
+							gender = readsheet.getCell(3, i).getContents();
+							college_num = readsheet.getCell(4, i).getContents();
+							major_num = readsheet.getCell(5, i).getContents();
+							sch_length = readsheet.getCell(6, i).getContents();
+							id_num = readsheet.getCell(7, i).getContents();
+							entr_time = readsheet.getCell(8, i).getContents();
+							stu_status = readsheet.getCell(9, i).getContents();
+							gradu_sch = readsheet.getCell(10, i).getContents();
+							email = readsheet.getCell(11, i).getContents();
+							telephone = readsheet.getCell(12, i).getContents();
+							home_addr = readsheet.getCell(13, i).getContents();
+							pos_code = readsheet.getCell(14, i).getContents();
+							citizenship = readsheet.getCell(15, i).getContents();
+							nation = readsheet.getCell(16, i).getContents();
+							String sql = "insert into tb_Student(stu_num,name_ch,birth_time,gender,college_num,major_num," +
+									"sch_length,id_num,entr_time,stu_status,gradu_sch,email,telephone,home_addr,pos_code," +
+									"citizenship,nation) values ('" + stu_num + "','" + name_en + "','" + birth_time + "','"+
 									gender + "','" + college_num + "','" + major_num + "','" + sch_length + "','" + id_num +
 									"','" + entr_time + "','" + stu_status + "','" + gradu_sch + "','" + email + "','" +
 									telephone + "','" + home_addr + "','" + pos_code + "','" + citizenship + "','" +
 									nation +
 									"')";
-							System.out.println("sql is :" + sql);
-							if (dao.insertStudentInfo(sql) <= 0) {
-								error = true;
-								break;
+							if (dao.isExistStudent(stu_num) == 0) {	//避免重复插入
+								if (dao.insertStudentInfo(sql) <= 0) {
+									error = true;
+									break;
+								}
 							}
 						}
-						if (error)
+						System.out.println( "error is " + error);
+						if (!error)
 							request.getRequestDispatcher("result.jsp?para=1").forward(request, response);
 						else 
 							request.getRequestDispatcher("result.jsp?para=2").forward(request, response);

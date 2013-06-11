@@ -8,6 +8,7 @@
 <body>
 	<%
 		int para = Integer.valueOf(request.getParameter("para"));
+		System.out.println("para is " + para);
 		switch(para) {
 			case 1:
 	 %>
@@ -22,6 +23,7 @@
 			<script language="javascript">
 			alert("学生信息导入失败!");
 			window.location.href="query.jsp";
+			</script>
 	<%
 			break;
 			}
