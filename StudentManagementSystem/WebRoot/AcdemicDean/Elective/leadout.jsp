@@ -28,44 +28,6 @@
 .MenuBar li.back{background:url(../../Images/b_slider.gif) center bottom no-repeat;width:120px;height:28px;z-index:8;position:absolute;}
 .MenuBar li a{font:bold 14px arial;text-decoration:none;color:#303030;outline:none;text-align:center;top:6px;letter-spacing:0;z-index:10;display:block;float:left;height:28px;position:relative;overflow:hidden;padding:5px 20px 0 17px;font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";font-weight:normal;font-size:13px;}
 </style>
-
-<script language="javascript" >	
-	function isEmpty(str) {
-		for (var i = 0; i < str.length; i ++) {
-			if (str.charAt(i)!=="")
-				return false;
-		}
-		return true;
-	}
-
-	function check(form) {
-		var fileName = form.file1.value;
-		if (isEmpty(fileName)) {
-			alert("请选择文件！");
-			form.file1.focus();
-			return false;
-		}
-		if (fileName.lastIndexOf(".") != -1) {
-			var fileType = (fileName.substring(fileName.lastIndexOf(".")+1,fileName.length)).toLowerCase();
-       		var suppotFile = new Array();
-    		suppotFile[0] = "xls";
-   			for(var i =0;i<suppotFile.length;i++){
-      			if(suppotFile[i]==fileType){
-    			 	return true;
-    			}
-				else{
-   					continue;
-    			}
-  			}
-  			alert("不支持文件类型"+fileType);
-  			return false;
- 		}
-		else{
-  			alert("文件只支持xls格式");
-  			return false;
- 		}
-	}
-</script>
 </head>
 
 <body>
@@ -108,14 +70,14 @@
 </div>
 <br/><br /><br /><br/>
 
-  <form id="form1" action="fileupload?action=importStudentInfo" method="post" enctype="multipart/form-data">
+  <form id="form1" action="filedownload?action=exportCourseInfo" method="post">
   <table width='35%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:	collapse' align='center'>
-  <tr class='TABLE_TH'><td colspan='2' align='center'>导入学生信息</td></tr>
-  <tr class='TABLE_TR_01'><td>导入文件（.xls）：</td><td><label for="file1"></label>
-    <input type="file" name="file1" id="file1" /></td></tr>
-   <tr class='TABLE_TR_02'>
-     <td colspan='2' align='center'><input type="submit" name="submit" id="submit" value="提交" onclick="return check(form1)"/></td></tr>
+  <tr class='TABLE_TH'><td colspan='2' align='center'>导出课程信息</td></tr>
+   <tr class='TABLE_TR_01'>
+   	 <td align='center'>课程信息表格：</td>
+     <td align='center'><input type="submit" name="submit" id="submit" value="下载" /></td></tr>
   </table>
+  <input type="hidden" name="account" value="<%=account %>"/>
   </form>
 <script type="text/javascript" src="../../JS/flash.js"></script>
 </body>

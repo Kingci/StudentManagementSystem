@@ -13,25 +13,25 @@
 			case 1:
 	 %>
 			<script language="javascript">
-			alert("学生信息导入成功!");
-			window.location.href="query.jsp";
+			alert("课程信息导入成功!");
+			window.location.href="index.jsp";
 			</script>	
 	<%
 			break;
 			case 2:
 	%>
 			<script language="javascript">
-			alert("学生信息导入失败!");
-			window.location.href= "exportStudent.xls";
+			alert("课程信息导入失败!");
+			window.location.href="index.jsp";
 			</script>
 	<%
 			break;
 			case 3:
 	%>
 			<script language="javascript">
-			alert("学生信息导出成功!");
-			window.open("http://localhost:8080/StudentManagementSystem/download/exportStudent.xls");
-			window.location.href="query.jsp";
+			alert("课程信息导出成功!");
+			window.open("http://localhost:8080/StudentManagementSystem/download/exportCourse.xls");
+			window.location.href="index.jsp";
 			</script>
 	<% 
 			break;

@@ -108,9 +108,9 @@
 </div>
 <br/><br /><br /><br/>
 
-  <form id="form1" action="fileupload?action=importStudentInfo" method="post" enctype="multipart/form-data">
+  <form id="form1" action="fileupload?action=importCourseInfo" method="post" enctype="multipart/form-data">
   <table width='35%'  class='TABLE_BODY' bordercolor='777777' border='1' style='border-color:#777777;border-collapse:	collapse' align='center'>
-  <tr class='TABLE_TH'><td colspan='2' align='center'>导入学生信息</td></tr>
+  <tr class='TABLE_TH'><td colspan='2' align='center'>导入课程信息</td></tr>
   <tr class='TABLE_TR_01'><td>导入文件（.xls）：</td><td><label for="file1"></label>
     <input type="file" name="file1" id="file1" /></td></tr>
    <tr class='TABLE_TR_02'>
