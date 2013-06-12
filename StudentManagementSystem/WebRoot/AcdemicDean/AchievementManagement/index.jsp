@@ -72,6 +72,7 @@
 	    <li ><a href="../AchievementManagement/query.jsp"><img src="../../Images/personal1.png" /><br />查看学生成绩</a></li>
         <li ><a href="../AchievementManagement/modify.jsp"><img src="../../Images/elective_gym.png" /><br />成绩录入</a></li>
   		<li ><a href="../AchievementManagement/creditsstatistics.jsp"><img src=" ../../Images/recondition.png" /><br />学分统计</a></li>
+		<li ><a href="../AchievementManagement/importGrades.jsp"><img src="../../Images/elective_public_renew.png" /><br />成绩信息导入</a></li>  
   </ul>
 </div>
 <script type="text/javascript" src="../../JS/flash.js"></script>

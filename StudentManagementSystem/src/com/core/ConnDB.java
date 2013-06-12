@@ -10,9 +10,9 @@ public class ConnDB {
 	  public ResultSet rs = null;
 	  private static String dbClassName ="com.mysql.jdbc.Driver";
 	  private static String dbUrl =
-	      "jdbc:mysql://127.0.0.1:3306/db_stumanagesys";
+	      "jdbc:mysql://127.0.0.1:3307/db_stumanagesys";
 	  public static String userName = "root";
-	  public static String password = "root";
+	  public static String password = "";
 	  public ConnDB(){
 
 	  }

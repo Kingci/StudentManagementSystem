@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import com.actionForm.AcdemicDeanForm;
 import com.actionForm.AcdemicInfoForm;
@@ -366,6 +367,11 @@ public class AdminDAO {
 		if(college.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(college);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -406,6 +412,11 @@ public class AdminDAO {
 		if(stu_num.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(stu_num);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -482,10 +493,20 @@ public class AdminDAO {
 	 * 查看某院系年级为entr_time的同学的所有成绩
 	 * */
 	public Collection QueryGradesByEntrTime(String entr_time, String college) {
+		System.out.println("entr_time = " + entr_time);
 		Collection<ShowGradesForm> coll = new ArrayList<ShowGradesForm>();
 		if(entr_time.equals(""))
 			return coll;
 		else {
+			try {
+				//Date date = new Date();
+				int year = Integer.parseInt(entr_time);
+				if(year < 0) 
+					return coll;
+			} catch(NumberFormatException ex){
+				return coll;
+			}
+			System.out.println("entr_time = " + entr_time);
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -527,6 +548,11 @@ public class AdminDAO {
 		if(course_id.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(course_id);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 

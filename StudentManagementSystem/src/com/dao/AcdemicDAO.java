@@ -2,8 +2,10 @@ package com.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import com.actionForm.ChooseCourseTimeForm;
 import com.actionForm.CourseForm;
@@ -493,6 +495,11 @@ public class AcdemicDAO {
 		if(college.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(college);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -533,6 +540,11 @@ public class AcdemicDAO {
 		if(stu_num.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(stu_num);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -613,6 +625,14 @@ public class AcdemicDAO {
 		if(entr_time.equals(""))
 			return coll;
 		else {
+			try {
+				//Date date = new Date();
+				int year = Integer.parseInt(entr_time);
+				if(year < 0) 
+					return coll;
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -654,6 +674,11 @@ public class AcdemicDAO {
 		if(course_id.equals(""))
 			return coll;
 		else {
+			try {
+				Integer.parseInt(course_id);
+			} catch(NumberFormatException ex){
+				return coll;
+			}
 			String sql = "";
 			sql = " select stu_num, name_ch, entr_time, college_num, tb_course_info.course_id, course_name_chs, credit, teach_mode, score " +
 			" from tb_student_course_info left join tb_student " + 
@@ -708,6 +733,23 @@ public class AcdemicDAO {
 		 int rt = conn.executeUpdate(sql);
 		 System.out.println(rt);
 		 return rt;
+	}
+	public boolean gradeItemExist(String stu_id, String course_id) {
+		String sql = "select * from tb_student_course_info where student_id = " +
+						stu_id + " and course_id = " + course_id;
+		ResultSet rs = conn.executeQuery(sql);
+		try {
+			while( rs.next() ) {
+				if( rs.getString(4) != null && rs.getString(4) != "" )
+					return true;
+				else 
+					return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;		
 	}
 	public Collection GetCredits(String entr_time, String college) {
 		Collection<ShowGradesForm> coll = new ArrayList<ShowGradesForm>();

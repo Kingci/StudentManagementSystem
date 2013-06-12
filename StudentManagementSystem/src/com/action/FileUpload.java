@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.actionForm.ShowGradesForm;
 import com.dao.AcdemicDAO;
 
 
@@ -56,7 +57,7 @@ public class FileUpload extends HttpServlet {
 				System.out.println("name:" + name);
 				//如果获取的 表单信息是普通的 文本 信息
 				if(item.isFormField())
-				{					
+				{
 					//获取用户具体输入的字符串 ，名字起得挺好，因为表单提交过来的是 字符串类型的
 					String value = item.getString() ;
 					request.setAttribute(name, value);
@@ -64,14 +65,16 @@ public class FileUpload extends HttpServlet {
 				//对传入的非 简单的字符串进行处理 ，比如说二进制的 图片，电影这些
 				else
 				{
+					System.out.println("--2");
 					//获取路径名
 					String value = item.getName() ;
 					//索引到最后一个反斜杠
 					int start = value.lastIndexOf("\\");
 					//截取 上传文件的 字符串名字，加1是 去掉反斜杠，
 					String filename = value.substring(start+1);
-					item.write(new File(path, filename));
 					//System.out.println("filename is " + filename + ", action is " + action);
+					item.write(new File(path, filename));
+					System.out.println("filename is " + filename + ", action is " + action);
 					InputStream instream = new FileInputStream(path + "/" + filename);
 					if (action.equals("importStudentInfo")) {  // 教务员端导入学生学籍信息
 						AcdemicDAO dao = new AcdemicDAO();
@@ -125,6 +128,7 @@ public class FileUpload extends HttpServlet {
 									telephone + "','" + home_addr + "','" + pos_code + "','" + citizenship + "','" +
 									nation +
 									"')";
+							System.out.println(sql);
 							if (dao.isExistStudent(stu_num) == 0) {	//避免重复插入
 								if (dao.insertStudentInfo(sql) <= 0) {
 									error = true;
@@ -137,6 +141,41 @@ public class FileUpload extends HttpServlet {
 							request.getRequestDispatcher("result.jsp?para=1").forward(request, response);
 						else 
 							request.getRequestDispatcher("result.jsp?para=2").forward(request, response);
+					}
+					else if (action.equals("importGradesInfo")) {  // 教务员端导入学生学籍信息
+						AcdemicDAO dao = new AcdemicDAO();
+						
+						Workbook readwb = Workbook.getWorkbook(instream);
+						Sheet readsheet = readwb.getSheet(0);
+						int rsColumns = readsheet.getColumns();
+						int rsRows = readsheet.getRows();
+						System.out.println("columns: " + rsColumns + ",rows:" + rsRows);
+						String stu_id = "";
+						String course_id = "";
+						String score = "";
+						boolean error = false;
+						for (int i = 1; i < rsRows ; i ++) {
+							stu_id = readsheet.getCell(0, i).getContents();
+							course_id = readsheet.getCell(1, i).getContents();
+							score = readsheet.getCell(2, i).getContents();
+							
+							ShowGradesForm form = new ShowGradesForm();
+							form.setStu_num(stu_id);
+							form.setCourse_id(course_id);
+							form.setScore(score);
+							
+							if (dao.gradeItemExist(stu_id, course_id) == false) {	//避免重复插入
+								if (dao.updateScore(form) <= 0) {
+									error = true;
+									break;
+								}
+							}
+						}
+						System.out.println( "error is " + error);
+						if (!error)
+							request.getRequestDispatcher("add_ok.jsp?para=1").forward(request, response);
+						else 
+							request.getRequestDispatcher("add_ok.jsp?para=2").forward(request, response);
 					}
 				}
 			}	

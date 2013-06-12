@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="com.dao.AcdemicDAO" %>
+<%@ page import="com.dao.AdminDAO" %>
 <%@ page import="com.actionForm.ShowGradesForm" %>
 <%@ page import="java.util.*" %>
 
@@ -18,8 +18,8 @@
 	String course_id = (String)session.getAttribute("getgrade_course_id")==null?"":(String)session.getAttribute("getgrade_course_id");
 	
 	/* Get query result by functions of AcdemicDAO */
-	AcdemicDAO acdemicDAO = new AcdemicDAO();
-	Collection coll = acdemicDAO.QueryGrades(key, stu_num, stu_name, entr_time, college, course_id);
+	AdminDAO adminDAO = new AdminDAO();
+	Collection coll = adminDAO.QueryGrades(key, stu_num, stu_name, entr_time, college, course_id);
 %>
 <head>
 <title>研究生教务系统</title>
@@ -212,7 +212,7 @@ if(coll!=null&&!coll.isEmpty()) {
 }
 else {
 %>
-<p>暂无内容！请检查输入。 </p>
+<p>查询结果为空，请检查输入是否正确。 </p>
 <%
 } 
 %>
